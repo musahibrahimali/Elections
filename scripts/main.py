@@ -193,5 +193,5 @@ except tweepy.TweepError as e:
     print("There was an error, find details below, else check your internet connection or your " +
           " credentials in the credentials.py file \n")
     print("If this is not your first time running this particular script, then there is a possibility that the "
-          "maximun rate limit has been exceeded. wait a few more minutes and re run the script\n")
+          "maximum rate limit has been exceeded. wait a few more minutes and re run the script\n")
     print("Error Details: " + str(e))
