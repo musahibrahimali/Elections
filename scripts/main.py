@@ -21,15 +21,18 @@ auth.set_access_token(access_key, access_secret)
 # api = tweepy.API(auth)
 api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 
+# the Script targets any of these keywords in the loop
 terms = [
     "akuffo addo", "bawumia", "npp", "president of ghana", "vice president of Ghana",
     "nana addo dankwa akuffo addo", "nana akuffo addo led administration", "sitting government of ghana",
     "current president of Ghana", "john dramani mahama", "asiedu nketia", "ndc", "ex-president of ghana",
     "former president og Ghana", "ex president of Ghana", "mahama led administration"
 ]
+# insert the keyword here for the extraction to continue
 searchQuery = ''
 retweet_filter = '-filter:retweets'
 
+# append the term to search parameters
 q = searchQuery + retweet_filter
 tweetsPerQry = 100
 fName = 'tweets.txt'
@@ -50,6 +53,7 @@ users = [
     "NJOAgyemang",
 ]
 
+# giving the user some feed back that the script is running
 print("Downloading tweets from user timelines...")
 
 # extract tweets from timeline of targeted politicians of the major political parties
@@ -58,6 +62,7 @@ try:
         writer = unicodecsv.writer(file, delimiter=',', quotechar='"')
         # Write header row.
 
+        # write the titles for each column
         writer.writerow([
             "Tweet Date",
             "Tweet ID",
@@ -67,6 +72,7 @@ try:
             "tweet_favorite_count"
         ])
 
+        # loop through all the users and extract tweets from their relative timelines
         for user in users:
             user_obj = api.get_user(user)
 
@@ -83,6 +89,7 @@ try:
                 # Get info specific to the current tweet of the current user.
                 tweet_text = unidecode(tweet.text)
 
+                # format the date
                 tweet_date = str(tweet.created_at.year) + "/" + str(tweet.created_at.month) + "/" + str(
                     tweet.created_at.day)
 
@@ -128,7 +135,7 @@ try:
                     for contributor in tweet.contributors:
                         contributors.append(unidecode(contributor['screen_name']))
 
-                # Write data to CSV.
+                # Write the extracted tweets to CSV.
                 writer.writerow([
                     tweet_date, tweet_id, tweet_text, tweet_source,
                     retweet_count, favorite_count,
