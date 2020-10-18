@@ -46,11 +46,11 @@ tweetCount = 0
 # Usernames whose tweets we want to gather.
 users = [
     "NAkufoAddo",
-    "MBawumia",
-    "wontumi_1",
     "JDMahama",
-    "officeofJJR",
+    "MBawumia",
     "NJOAgyemang",
+    "wontumi_1",
+    "officeofJJR",
 ]
 
 # giving the user some feed back that the script is running
