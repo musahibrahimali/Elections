@@ -25,7 +25,7 @@ api = tweepy.API(auth, wait_on_rate_limit=True, wait_on_rate_limit_notify=True)
 terms = [
     "akuffo addo", "bawumia", "npp", "president of ghana", "vice president of Ghana",
     "nana addo dankwa akuffo addo", "nana akuffo addo led administration", "sitting government of ghana",
-    "current president of Ghana", "john dramani mahama", "asiedu nketia", "ndc", "ex-president of ghana",
+    "current president of Ghana", "john dramani mahama", "ndc", "ex-president of ghana",
     "former president og Ghana", "ex president of Ghana", "mahama led administration"
 ]
 # insert the keyword here for the extraction to continue
@@ -201,4 +201,4 @@ except tweepy.TweepError as e:
           " credentials in the credentials.py file \n")
     print("If this is not your first time running this particular script, then there is a possibility that the "
           "maximum rate limit has been exceeded. wait a few more minutes and re run the script\n")
-    print("Error Details: " + str(e))
+    print(f"Error Details: {str(e)}")
